@@ -19,25 +19,26 @@
     </tr>
   </thead>
   <tbody>
-    <?php
-        // Início do loop que percorre todas as linhas retornadas da tabela 'alunos'
-        while($row=mysqli_fetch_assoc($resultado)){          // Cada iteração pega uma linha da tabela como array associativo ($row)
-            echo "<tr>";                                    // Cria uma nova linha na tabela HTML
+  <?php
+    // Início do loop que percorre todas as linhas retornadas da tabela 'eventos'
+    while ($row = mysqli_fetch_assoc($resultado)) {  // Cada iteração pega uma linha da tabela como array associativo ($row)
+        echo "<tr>";                                 // Cria uma nova linha na tabela HTML
 
-            echo "<td>".$row['id']."</td>";                 // Cria uma célula com o ID do aluno
-            echo "<td>".$row['assunto']."</td>";               // Cria uma célula com o nome do aluno
-            echo "<td>".$row['descrissao']."</td>";          // Cria uma célula com o número de matrícula
+        echo "<td>" . $row['id'] . "</td>";          // Célula com o ID
+        echo "<td>" . $row['assunto'] . "</td>";     // Célula com o assunto
+        echo "<td>" . $row['descrissao'] . "</td>";  // Célula com a descrição
 
-             echo "</tr>";                                   // Fecha a linha da tabela
-        }
-                 ?>           
-    <tr>
-      <td>
-         <a class="btn btn-outline-danger" href="#" role="button">Excluir</a>
-         <a class="btn btn-outline-success" href="editar.php" role="button">Editar</a>
-      </td>
-    </tr>
-  </tbody>
+        // Coluna com botões de ação
+        echo "<td>
+                <a class='btn btn-outline-danger' href='excluir.php?id=" . $row['id'] . "' role='button'>Excluir</a>
+                <a class='btn btn-outline-success' href='editar.php?id=" . $row['id'] . "' role='button'>Editar</a>
+              </td>";
+
+        echo "</tr>";                                // Fecha a linha da tabela
+    }
+  ?>
+</tbody>
+
 </table>
 
 
